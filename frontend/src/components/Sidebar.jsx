@@ -1,76 +1,86 @@
-import { useState } from 'react';
-
-const browseItems = [
-  { icon: '📋', label: 'All events', active: true },
-  { icon: '🔥', label: 'Trending' },
-  { icon: '🕐', label: 'This week' },
-  { icon: '📍', label: 'Nearby' },
-];
-
-const vibeItems = [
-  { icon: '🎵', label: 'Music & parties' },
-  { icon: '💻', label: 'Tech & hackathons' },
-  { icon: '🎨', label: 'Arts & culture' },
-  { icon: '⚽', label: 'Sports' },
-];
-
-const savedItems = [
-  { icon: '❤️', label: 'Wishlist', badge: 3 },
-  { icon: '✓', label: 'Going', badge: 2 },
-];
+import { 
+  Calendar, 
+  Compass, 
+  TrendingUp, 
+  Clock, 
+  MapPin, 
+  Music, 
+  Cpu, 
+  Palette, 
+  Trophy, 
+  Heart, 
+  CheckCircle2,
+  LayoutDashboard
+} from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Sidebar() {
-  const [activeItem, setActiveItem] = useState('All events');
+  const location = useLocation();
+  const { user } = useAuth();
+  const currentPath = location.pathname;
+
+  const isActive = (path) => currentPath === path;
 
   return (
     <aside className="sidebar">
       <div className="sidebar-section">
-        <div className="sidebar-label">Browse</div>
+        <div className="sidebar-label">Main</div>
         <nav className="sidebar-nav">
-          {browseItems.map((item) => (
-            <button
-              key={item.label}
-              className={`sidebar-item ${activeItem === item.label ? 'active' : ''}`}
-              onClick={() => setActiveItem(item.label)}
-            >
-              <span className="sidebar-icon">{item.icon}</span>
-              {item.label}
-              {item.active && <span className="sidebar-dot green"></span>}
-            </button>
-          ))}
+          <Link to="/" className={`sidebar-item ${isActive('/') ? 'active' : ''}`}>
+            <Compass size={18} className="sidebar-icon" />
+            <span>Discover</span>
+          </Link>
+          {user && (
+            <Link to="/dashboard" className={`sidebar-item ${isActive('/dashboard') ? 'active' : ''}`}>
+              <LayoutDashboard size={18} className="sidebar-icon" />
+              <span>Dashboard</span>
+            </Link>
+          )}
+          <Link to="/events" className={`sidebar-item ${isActive('/events') ? 'active' : ''}`}>
+            <Calendar size={18} className="sidebar-icon" />
+            <span>All Events</span>
+          </Link>
+          <Link to="/events?filter=trending" className="sidebar-item">
+            <TrendingUp size={18} className="sidebar-icon" />
+            <span>Trending</span>
+          </Link>
         </nav>
       </div>
 
       <div className="sidebar-section">
-        <div className="sidebar-label">Vibe</div>
+        <div className="sidebar-label">Categories</div>
         <nav className="sidebar-nav">
-          {vibeItems.map((item) => (
-            <button
-              key={item.label}
-              className={`sidebar-item ${activeItem === item.label ? 'active' : ''}`}
-              onClick={() => setActiveItem(item.label)}
-            >
-              <span className="sidebar-icon">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
+          <Link to="/events?category=cultural" className="sidebar-item">
+            <Music size={18} className="sidebar-icon" />
+            <span>Music & Parties</span>
+          </Link>
+          <Link to="/events?category=tech" className="sidebar-item">
+            <Cpu size={18} className="sidebar-icon" />
+            <span>Tech & Hackathons</span>
+          </Link>
+          <Link to="/events?category=arts" className="sidebar-item">
+            <Palette size={18} className="sidebar-icon" />
+            <span>Arts & Culture</span>
+          </Link>
+          <Link to="/events?category=sports" className="sidebar-item">
+            <Trophy size={18} className="sidebar-icon" />
+            <span>Sports</span>
+          </Link>
         </nav>
       </div>
 
       <div className="sidebar-section">
-        <div className="sidebar-label">Saved</div>
+        <div className="sidebar-label">Your Activity</div>
         <nav className="sidebar-nav">
-          {savedItems.map((item) => (
-            <button
-              key={item.label}
-              className={`sidebar-item ${activeItem === item.label ? 'active' : ''}`}
-              onClick={() => setActiveItem(item.label)}
-            >
-              <span className="sidebar-icon">{item.icon}</span>
-              {item.label}
-              {item.badge > 0 && <span className="sidebar-badge">{item.badge}</span>}
-            </button>
-          ))}
+          <Link to="/dashboard" className="sidebar-item">
+            <Heart size={18} className="sidebar-icon" />
+            <span>Wishlist</span>
+          </Link>
+          <Link to="/dashboard" className="sidebar-item">
+            <CheckCircle2 size={18} className="sidebar-icon" />
+            <span>Going</span>
+          </Link>
         </nav>
       </div>
     </aside>

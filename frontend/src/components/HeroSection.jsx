@@ -1,3 +1,5 @@
+import { ArrowRight, Sparkles } from 'lucide-react';
+
 export default function HeroSection() {
   return (
     <section className="hero" id="hero">
@@ -5,7 +7,6 @@ export default function HeroSection() {
       <div className="hero-bg">
         <div className="hero-orb hero-orb-1"></div>
         <div className="hero-orb hero-orb-2"></div>
-        <div className="hero-orb hero-orb-3"></div>
         <div className="hero-grid"></div>
       </div>
 
@@ -13,13 +14,13 @@ export default function HeroSection() {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="hero-badge-dot"></span>
-            Built for college campuses
+            <Sparkles size={14} /> Built for college campuses
           </div>
 
           <h1 className="hero-title">
             Your College Events
             <br />
-            Deserve <span className="gradient-text">Better</span>
+            Deserve <span className="serif-italic">Better</span>
           </h1>
 
           <p className="hero-subtitle">
@@ -29,10 +30,10 @@ export default function HeroSection() {
           </p>
 
           <div className="hero-actions">
-            <a href="/signup" className="btn btn-primary btn-lg">
-              🚀 Start for Free
+            <a href="/signup" className="btn-premium primary">
+              Start for Free <ArrowRight size={18} />
             </a>
-            <a href="#features" className="btn btn-secondary btn-lg">
+            <a href="#features" className="btn-premium secondary">
               Explore Features
             </a>
           </div>

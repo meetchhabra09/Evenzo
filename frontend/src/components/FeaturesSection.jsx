@@ -1,66 +1,63 @@
+import { 
+  Calendar, ClipboardCheck, Ticket, BarChart3, Bell, Search 
+} from 'lucide-react';
+
 const features = [
   {
-    icon: "🗓️",
-    title: "Event Creation & Management",
-    desc: "Create, edit, and manage events with ease — no tech expertise required. Set up in minutes, not hours.",
-    color: "purple",
+    icon: <Calendar />,
+    title: "Event Orchestration",
+    desc: "Create and manage events with precision. Set up registrations, schedules, and details in minutes.",
   },
   {
-    icon: "📋",
+    icon: <ClipboardCheck />,
     title: "Smart Registrations",
-    desc: "Custom registration forms with built-in validation. Replace Google Forms with a sleek, integrated experience.",
-    color: "cyan",
+    desc: "Custom registration architecture with built-in validation. A sleek, integrated experience for students.",
   },
   {
-    icon: "🎟️",
-    title: "Digital Tickets & QR Check-in",
-    desc: "Auto-generated tickets with QR codes for fast, paperless entry. No more manual attendance sheets.",
-    color: "pink",
+    icon: <Ticket />,
+    title: "Digital Ecosystem",
+    desc: "Auto-generated QR tickets for paperless entry. High-speed check-in at the venue door.",
   },
   {
-    icon: "📊",
-    title: "Real-time Dashboard",
-    desc: "Live attendance tracking, registration stats, and participant management for organizers at a glance.",
-    color: "orange",
+    icon: <BarChart3 />,
+    title: "Live Analytics",
+    desc: "Real-time registration tracking and participant management. Data-driven insights for organizers.",
   },
   {
-    icon: "🔔",
-    title: "Instant Notifications",
-    desc: "Email and in-app alerts for event updates, reminders, and announcements. Never miss a beat.",
-    color: "green",
+    icon: <Bell />,
+    title: "Pulse Notifications",
+    desc: "Automated reminders and instant alerts for event updates. Keeping students in the loop.",
   },
   {
-    icon: "🔍",
-    title: "Event Discovery",
-    desc: "Browse and filter upcoming college events by category, date, or department. Discover what's happening on campus.",
-    color: "yellow",
+    icon: <Search />,
+    title: "Elite Discovery",
+    desc: "Browse and filter the campus catalog by category or department. Find your next experience.",
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section className="features section" id="features">
+    <section className="section-v3 features-section" id="features">
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">Features</span>
-          <h2 className="section-title">
-            Everything You Need, <span className="gradient-text">Nothing You Don't</span>
+        <div className="section-header-clean">
+          <span className="section-label">Capabilities</span>
+          <h2 className="section-title-v3">
+            Everything You Need, <br /> <span>Nothing You Don't</span>
           </h2>
-          <p className="section-subtitle">
+          <p className="hero-subtitle">
             Powerful tools for organizers. Seamless experience for students. All
             in one beautiful platform.
           </p>
         </div>
 
-        <div className="features-grid">
+        <div className="features-grid-v3">
           {features.map((feature, index) => (
-            <div className="feature-card glass-card" key={index}>
-              <div className={`feature-icon ${feature.color}`}>
-                <div className="feature-icon-bg"></div>
-                <span>{feature.icon}</span>
+            <div className="feature-card-v3" key={index}>
+              <div className="feature-icon-v3">
+                {feature.icon}
               </div>
-              <h3 className="feature-title">{feature.title}</h3>
-              <p className="feature-desc">{feature.desc}</p>
+              <h3 className="feature-title-v3">{feature.title}</h3>
+              <p className="feature-desc-v3">{feature.desc}</p>
             </div>
           ))}
         </div>

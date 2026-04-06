@@ -12,11 +12,11 @@ const filters = [
   'your college',
 ];
 
-export default function FilterBar() {
+export default function FilterBar({ className = "" }) {
   const [active, setActive] = useState('everything');
 
   return (
-    <div className="filter-bar">
+    <div className={`filter-bar ${className}`}>
       {filters.map((f) => (
         <button
           key={f}
